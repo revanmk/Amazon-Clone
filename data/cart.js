@@ -22,7 +22,8 @@ export function addToCart(productId){
             else{
             cart.push({
                 productId:productId,
-                quantity:select_quantity
+                quantity:select_quantity,
+                deliveryOptionId:'1'
             });
         }
     saveToStorage();  
@@ -46,3 +47,10 @@ export function calculateCartQuantity(){
         });
     return cartQuantity;
 }
+
+
+export function updateCartQuantityUI() {
+  const cartQuantity = calculateCartQuantity();
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity === 0 ? '' : cartQuantity;
+}
+
